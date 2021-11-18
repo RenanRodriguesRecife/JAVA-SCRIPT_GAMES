@@ -140,6 +140,15 @@
                         break;
                 }
 
+                /*HACK - para teste*/
+                if(0 > nx || nx > grid.width-1 ||
+                0 > ny || ny > grid.height-1)
+                {
+                    return init();
+                }
+
+                /* */
+
                 var tail = snake.remove();
                 grid.set(EMPTY, tail.x,tail.y);
                 tail.x = nx;
