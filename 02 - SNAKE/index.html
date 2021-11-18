@@ -136,6 +136,11 @@
                 var nx = snake.last.x;
                 var ny = snake.last.y;
 
+                if(keystate[KEY_LEFT]) snake.direction = LEFT;
+                if(keystate[KEY_UP]) snake.direction = UP;
+                if(keystate[KEY_RIGHT]) snake.direction = RIGHT;
+                if(keystate[KEY_DOWN]) snake.direction = DOWN;
+
                 switch(snake.direction){
                     case LEFT:
                         nx--;
