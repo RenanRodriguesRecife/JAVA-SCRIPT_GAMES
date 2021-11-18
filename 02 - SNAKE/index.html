@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    fdsa
     <script>
         var COLS = 26, ROWS = 26;
         //ids
@@ -99,17 +100,38 @@
         function loop(){
             update();
             draw();
-            
+
             window.requestAnimationFrame(loop, canvas);
 
         }
 
         function update(){
-
+            frames++;
         }
         function draw(){
+            var tw = canvas.width/grid.width;
+            var th = canvas.height/grid.height;
 
+            
+            for(var x=0; x<grid.width; x++){
+                for(var y=0; y <grid.height; y++){
+                    switch(grid.get(x.y)){
+                        case EMPTY:
+                            ctx.fillStyle = "#fff";
+                            break;
+                        case SNAKE:
+                            ctx.fillStyle = "#0ff";
+                            break;
+                        case FRUIT:
+                            ctx.fillStyle = "#f00";
+                            break;
+                    }
+                    ctx.fillReact(x*tw, y*th, tw, th);
+                }
+            }
         }
+
+        main()
     </script>
 </body>
 </html>
