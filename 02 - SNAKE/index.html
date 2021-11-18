@@ -68,8 +68,20 @@
             grid.set(FRUIT, randpor.x, randpos.y);
         }
 
-        function main(){
+        var canvas, ctx, keystate, frames;
 
+        function main(){
+            canvas = document.createElement("canvas");
+            canvas.width = COLS*20;
+            canvas.height = ROWS*20;
+            ctx = canvas.getContext("2d");
+            document.body.appendChild(canvas);
+
+            frames = 0;
+            keystate = {};
+
+            init();
+            loop();
         }
         function init(){
 
