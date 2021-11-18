@@ -87,7 +87,7 @@
             grid.set(FRUIT, randpos.x, randpos.y);
         }
 
-        var canvas, ctx, keystate, frames;
+        var canvas, ctx, keystate, frames, score;
 
         function main(){
             canvas = document.createElement("canvas");
@@ -95,6 +95,8 @@
             canvas.height = ROWS*20;
             ctx = canvas.getContext("2d");
             document.body.appendChild(canvas);
+
+            ctx.font = "12px Helvetica";
 
             frames = 0;
             keystate = {};
@@ -111,7 +113,7 @@
             loop();
         }
         function init(){
-
+            score = 0;
             grid.init(EMPTY, COLS, ROWS);
             //sp - SET STOP
             var sp = {x:Math.floor(COLS/2), y:ROWS-1};
@@ -167,6 +169,7 @@
                 //eat food
                 if(grid.get(nx,ny)===FRUIT){
                     var tail = {x:nx, y:ny};
+                    score++;
                     setFood();
                 }else{
                     var tail = snake.remove();
@@ -202,6 +205,8 @@
                     ctx.fillRect(x*tw, y*th, tw, th);
                 }
             }
+            ctx.fillStyle = "#000"
+            ctx.fillText("SCORE: " + score, 10, canvas.height-10);
         }
 
         main()
