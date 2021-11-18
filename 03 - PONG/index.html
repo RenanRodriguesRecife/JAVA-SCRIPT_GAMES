@@ -9,6 +9,7 @@
 <body>
     <script>
         var WIDTH=700, HEIGHT=600, pi=Math.PI;
+        var UpArrow=38, DownArrow=40;
         var canvas, ctx, keystate;
         var player, ai, ball;
 
@@ -18,7 +19,10 @@
             width: 20,
             height: 100,
 
-            update: function(){},
+            update: function(){
+                if(keystate[UpArrow]) this.y -= 7;
+                if(keystate[DownArrow]) this.y += 7;
+            },
             draw: function(){
                 ctx.fillRect(this.x,this.y,this.width,this.height);
             }
