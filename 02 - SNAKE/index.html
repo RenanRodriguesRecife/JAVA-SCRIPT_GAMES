@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    fdsa
+    
     <script>
         var COLS = 26, ROWS = 26;
         //ids
@@ -20,7 +20,7 @@
             height: null,
             _grid: null,
 
-            init: function(a, c,r){
+            init: function(d, c,r){
                 this.width = c;
                 this.height = r;
                 this._grid = [];
@@ -34,7 +34,8 @@
             set: function(val, x, y){
                 this._grid[x][y] = val;
             },
-            get: function(x ,y){
+
+            get: function(x, y){
                 return this._grid[x][y];
             }
         }
@@ -68,7 +69,7 @@
                 }
             }
             var randpos = empty[Math.floor(Math.random()*empty.length)];
-            grid.set(FRUIT, randpor.x, randpos.y);
+            grid.set(FRUIT, randpos.x, randpos.y);
         }
 
         var canvas, ctx, keystate, frames;
@@ -115,7 +116,7 @@
             
             for(var x=0; x<grid.width; x++){
                 for(var y=0; y <grid.height; y++){
-                    switch(grid.get(x.y)){
+                    switch(grid.get(x,y)){
                         case EMPTY:
                             ctx.fillStyle = "#fff";
                             break;
@@ -126,7 +127,7 @@
                             ctx.fillStyle = "#f00";
                             break;
                     }
-                    ctx.fillReact(x*tw, y*th, tw, th);
+                    ctx.fillRect(x*tw, y*th, tw, th);
                 }
             }
         }
