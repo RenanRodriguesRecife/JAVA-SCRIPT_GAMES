@@ -54,6 +54,16 @@
             ctx = canvas.getContext("2d");
             document.body.appendChild(canvas);
 
+            //key event
+            keystate = {};
+            document.addEventListener("keydown", function(evt){
+                keystate[evt.keyCode] = true;
+            });
+            document.addEventListener("keyup", function(evt){
+                delete keystate[evt.keyCode];
+            });
+
+
             init();
 
             var loop = function(){
