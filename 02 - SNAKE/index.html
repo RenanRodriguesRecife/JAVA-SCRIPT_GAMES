@@ -38,10 +38,13 @@
 
         var snake = {
             direction: null,
+            last: null,
             _queue: null,
 
             init: function(d, x, y){
-
+                this.direction = d;
+                this._queue = [];
+                this.insert(x,y);
             },
             insert: function(x ,y){
 
