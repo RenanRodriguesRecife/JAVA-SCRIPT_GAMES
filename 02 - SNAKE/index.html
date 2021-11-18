@@ -56,7 +56,16 @@
         }
 
         function setFood(){
-
+            var empty = [];
+            for(var x=0; x<grid.width; x++){
+                for(var y=0; y <grid.height; y++){
+                    if(grid.get(x,y) === EMPTY){
+                        empty.push({x:x, y:y})
+                    }
+                }
+            }
+            var randpos = empty[Math.floor(Math.random()*empty.length)];
+            grid.set(FRUIT, randpor.x, randpos.y);
         }
 
         function main(){
