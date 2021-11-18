@@ -1,7 +1,8 @@
 # JAVASCRIPT GAMES
-01 - Jogo da cobrinha (NOKIA 3310) em javascript
-02 - Jogo da cobrinha usando canvas
-
+<ul>
+<li>01 - Jogo da cobrinha (NOKIA 3310) em javascript</li>
+<li>02 - Jogo da cobrinha usando canvas</li>
+</ul>
 https://renanrodriguesrecife.github.io/JAVA-SCRIPT_GAMES/
 
 
