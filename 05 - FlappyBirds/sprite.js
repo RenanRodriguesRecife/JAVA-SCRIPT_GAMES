@@ -11,3 +11,15 @@ s_plash,
 s_buttons,
 s_numberS,
 s_numberB;
+
+function Sprite(img, x, y, width, height){
+
+};
+
+Sprite.prototype.draw = function(ctx, x ,y){
+
+};
+
+function initSprites(img){
+    
+}
