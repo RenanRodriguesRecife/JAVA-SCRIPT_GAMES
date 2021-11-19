@@ -32,6 +32,8 @@
             update: function(){
                 if(keystate[UpArrow]) this.y -= 7;
                 if(keystate[DownArrow]) this.y += 7;
+                //limite do canvas
+                this.y = Math.max(Math.min(this.y, HEIGHT - this.height),0);
             },
             draw: function(){
                 ctx.fillRect(this.x,this.y,this.width,this.height);
@@ -50,7 +52,9 @@
                 var desty = ball.y - (this.height - ball.side)*0.5;
                 //velocidade do adversário
                 this.y += (desty - this.y)*0.1;
-
+                //limite do canvas
+                this.y = Math.max(Math.min(this.y, HEIGHT - this.height),0);
+        
 
             },
             draw: function(){
@@ -96,7 +100,7 @@
                         this.vel.x = smash*(pdle===player ? 1: -1)*this.speed*Math.cos(phi);
                         this.vel.y = smash*this.speed*Math.sin(phi);
 
-                        this.speed += 0.1;
+                        this.speed += 0.5;
                         console.log(this.speed)
                     }
 
@@ -109,6 +113,7 @@
                             x: ball.speed,
                             y: 0
                         }
+                        this.speed = 5;
                     }
 
             },
