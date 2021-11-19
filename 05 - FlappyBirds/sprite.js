@@ -21,7 +21,8 @@ function Sprite(img, x, y, width, height){
 };
 
 Sprite.prototype.draw = function(ctx, x ,y){
-
+    ctx.drawImage(this.img, this.x,this.y, this.width,this.height,
+        x, y, this.width, this.height);
 };
 
 function initSprites(img){
