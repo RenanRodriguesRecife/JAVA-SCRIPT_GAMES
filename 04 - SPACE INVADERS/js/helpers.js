@@ -46,7 +46,7 @@ function InputHandeler(){
 };
 
 InputHandeler.prototype.isDown = function(code){
-    return this.down[code];
+    return this.down[code]; 
 }
 
 InputHandeler.prototype.isPressed = function(code){
