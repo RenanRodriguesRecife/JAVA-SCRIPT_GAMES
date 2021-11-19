@@ -21,10 +21,12 @@
 </head>
 <body>
     <script>
-        
-        var screen, input, frames;
+        //sprite frame - spFrame
+        //level frame - lvFrame
+        var screen, input, frames, spFrame, lvFrame;
         var alSprite, taSprite, ciSprite;
         var aliens, dir, tank, bullets, cities;
+        //dir - direction
 
         function main(){
             //obs: esses valores devem ser multiplos de 30
@@ -53,6 +55,8 @@
 
         function init(){
             franes = 0;
+            spFrame = 0;
+            lvFrame = 60;
 
             aliens = [];
             var rows = [1, 0, 0, 2, 2];
@@ -94,3 +98,5 @@
     </script>
 </body>
 </html>
+
+20:11
