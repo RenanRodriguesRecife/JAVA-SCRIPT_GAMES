@@ -84,7 +84,10 @@
         };
 
         function render() {
-            screen.drawSprite(alSprite[0][0], 10, 10);
+            for (var i = 0, len = aliens.length; i < len; i++){
+                var a = aliens[i];
+                screen.drawSprite(a.sprite[0], a.x, a.y);
+            }
         };
 
         main();
