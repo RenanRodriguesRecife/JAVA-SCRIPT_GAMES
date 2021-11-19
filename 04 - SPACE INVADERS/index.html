@@ -94,12 +94,27 @@
             if(frames % lvFrame === 0){
                 //fazendo o array de aliens se mover
                 spFrame = (spFrame + 1) % 2;
+
+                //valores limites laterais da movimentação dos aliens
+                var _max = 0, _min = screen.width;
+
                 for(var i = 0, len = aliens.length; i < len; i++){
                     var a = aliens[i];
                     
                     a.x += 30 * dir;
-                    
+                
+                    _max = Math.max(_max, a.x + a.w);
+                    _min = Math.min(_min, a.x);
+
                 }
+                if(_max > screen.width - 30 || _min < 30){
+                    dir *= -1;
+                    for (var i = 0, len = aliens.length; i < len; i++){
+                        aliens[i].x += 30 * dir;
+                        aliens[i].y += 30;
+                    }
+                }
+            
             }
         };
 
