@@ -27,6 +27,27 @@
         var aliens, dir, tank, bullets, cities;
 
         function main(){
+            //obs: esses valores devem ser multiplos de 30
+            screen = new Screen(510, 600);
+            input = new InputHandeler();
+
+            var img = new Image();
+            img.addEventListener("load",function(){
+                //Alien Sprite - tem 3 diferente aliens
+                alSprite = [
+                    [new Sprite(this,  0, 0, 22, 16), new Sprite(this,  0, 16, 22, 16)],
+                    [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
+                    [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
+                ];
+                //tank Sprite
+                taSprite = new Sprite(this);
+                //City  Sprite
+                ciSprite = new Sprite(this);
+
+                init();
+                run();
+            });
+            img.src = 'res/invaders.png';
 
         };
 
