@@ -78,7 +78,14 @@
                 if(AABBIntersect(pdle.x, pdle.y, pdle.width, pdle.height,
                     this.x, this.y, this.side, this.side)
                     ){
-                        this.vel.x *= -1;
+                        this.x = pdle === player ? player.x + player.width : ai.x - this.side;
+                        //calculo da normal para fazer o movimento refletido da bola
+                        var n = (this.y+this.side - pdle.y)/(pdle.height+this.side);
+                        var phi = 0.25*pi* (2*n -1);//pi/4=45
+
+                        //this.vel.x *= -1;
+                        this.vel.x = (pdle===player ? 1: -1)*this.speed*Math.cos(phi);
+                        this.vel.y = this.speed*Math.sin(phi);
                     }
 
             },
