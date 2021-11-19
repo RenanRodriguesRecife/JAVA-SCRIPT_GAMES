@@ -1,13 +1,16 @@
 //HELPER FUNCTIONS
 
 
+
 //SCREEN
 function Screen(width, height){
+    //criando a canvas e colocar um contexto 2d
     this.canvas = document.createElement("canvas");
     this.canvas.width = this.width = width;
     this.canvas.height = this.height = height;
     this.ctx = this.canvas.getContext("2d");
-
+    //adicionar o canvas no corpo do documento
+    document.body.appendChild(this.canvas);
 }
 
 Screen.prototype.drawSprite = function(sp, x, y){
@@ -50,3 +53,4 @@ InputHandeler.prototype.isPressed = function(code){
     }
     return false;
 }
+
