@@ -13,7 +13,11 @@ s_numberS,
 s_numberB;
 
 function Sprite(img, x, y, width, height){
-
+    this.img = img;
+    this.x = x*2;
+    this.y = y*2;
+    this.width = width*2;
+    this.height = height*2;
 };
 
 Sprite.prototype.draw = function(ctx, x ,y){
@@ -21,5 +25,5 @@ Sprite.prototype.draw = function(ctx, x ,y){
 };
 
 function initSprites(img){
-    
+
 }
