@@ -1,3 +1,20 @@
+
+//Bullet
+function Bullet(x , y ,vely, w, h, color){
+    this.x = x;
+    this.y = y;
+    this.vely = vely;
+    this.width = w;
+    this.height = h;
+    this.color = color;
+    
+}
+
+Bullet.prototype.update = function(){
+    
+    this.y += this.vely;
+}
+
 //HELPER FUNCTIONS
 
 
@@ -22,8 +39,10 @@ Screen.prototype.drawSprite = function(sp, x, y){
 }
 
 Screen.prototype.drawBullet = function(bullet){
+    
     this.ctx.fillStyle = bullet.color;
     this.ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+    
 }
 
 //SPRITE
@@ -63,16 +82,3 @@ InputHandeler.prototype.isPressed = function(code){
     return false;
 }
 
-//Bullet
-function Bullet(x , y ,vely, w, h, color){
-    this.x = x;
-    this.y = y;
-    this.vely = vely;
-    this.width = w;
-    this.height = h;
-    this.color = color;
-}
-
-Bullet.prototype.update = function(){
-    this.y += this.vely;
-}
