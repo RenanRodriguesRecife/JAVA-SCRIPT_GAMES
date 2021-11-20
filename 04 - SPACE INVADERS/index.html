@@ -126,6 +126,19 @@
                     len--
                     continue;
                 }
+
+                //Kill Aliens
+                for(var j = 0, len2 = aliens.length; j < len2; j++){
+                    var a = aliens[j];
+                    if(AABBIntersect(b.x, b.y, b.width, b.height, a.x,a.y, a.w, a.h)){
+                        aliens.splice(j, 1);
+                        j--;
+                        len2--;
+                        bullets.splice(i, 1);
+                        i--;
+                        len--;
+                    }
+                }
             }
 
             //Alian aleatório atira
