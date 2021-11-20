@@ -128,6 +128,20 @@
                 }
             }
 
+            //Alian aleatório atira
+            if(Math.random() < 0.03 && aliens.length > 0){
+                var a = aliens[Math.round(Math.random() * (aliens.length - 1))];
+
+                for (var i = 0, len = aliens.length; i< len; i++){
+                    var b = aliens[i];
+                    if(AABBIntersect(a.x, a.y, a.w, 100,b.x,b.y,b.w,b.h)){
+                        a = b;
+                    }
+                }
+                bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4,2,4,"#fff"))
+            }
+
+
             frames++;
             
             if(frames % lvFrame === 0){
