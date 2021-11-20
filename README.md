@@ -12,8 +12,6 @@ https://renanrodriguesrecife.github.io/JAVA-SCRIPT_GAMES/
 
 
 <!--
-- pong
-- space invaders
 - asteroids
 - flappy bird
 - tic tac toe
