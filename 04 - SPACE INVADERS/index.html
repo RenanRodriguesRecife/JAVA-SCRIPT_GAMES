@@ -21,19 +21,54 @@
 </head>
 <body>
     <script>
-        //sprite frame - spFrame
-        //level frame - lvFrame
-        var screen, input, frames, spFrame, lvFrame;
-        var alSprite, taSprite, ciSprite;
-        var aliens, dir, tank, bullets, cities;
-        //dir - direction
+       
+        var screen, input;
+        // lvFrame (level frame) - spFrame (sprite frame)
+        var frames, spFrame, lvFrame;
 
-        function main(){
-            //obs: esses valores devem ser multiplos de 30
-            screen = new Screen(510, 600);
-            input = new InputHandeler();
+        var alSprite, ciSprite;
 
+        var aliens, dir, bullets, cities;
+        //dir - alien move direction 
+
+        tank = {
+            x: null,
+            y: null,
+            sprite: null,
+
+            loadSprite: function(img){
+                this.sprite = new Sprite(img, 62, 0, 22, 16);
+            },
+
+            init: function(){
+                this.x = (screen.width - this.sprite.w)/2;
+                this.y = screen.height - (30 + this.sprite.h)
+            },
+
+            move: function(){
+                //tank movement
+                if(input.isDown(37)){
+                    this.x -=4;
+                }   
+                if(input.isDown(39)){
+                    this.x +=4;
+                }
+                
+                this.x = Math.max(Math.min(this.x,screen.width - (30 + this.sprite.w)), 30);
+            },
+
+            shoot: function(keyCode, bulletList){
+                //shoting bullets
+                if(input.isPressed(keyCode)){
+                    bulletList.push(new Bullet(tank.x + 10,tank.y, -8, 2, 6,"#fff"));
+                }
+            }
+        }
+        
+
+        function loadImages(){
             var img = new Image();
+            img.src = "res/invaders.png";
             img.addEventListener("load",function(){
                 //Alien Sprite - tem 3 diferente aliens
                 alSprite = [
@@ -42,30 +77,33 @@
                     [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
                 ];
                 //tank Sprite
-                taSprite = new Sprite(this, 62, 0, 22, 16);
+                tank.loadSprite(this);
+                
                 //City  Sprite
                 ciSprite = new Sprite(this, 84, 8, 35, 24);
+                
 
                 init();
                 run();
             });
-            img.src = "res/invaders.png";
+        }
 
+
+        function main(){
+            //obs: esses valores devem ser multiplos de 30
+            screen = new Screen(510, 600);
+            input = new InputHandeler();
+            loadImages();
         };
 
         function init(){
             frames = 0;
             spFrame = 0;
             lvFrame = 60;
+            
             dir = 1;
 
-
-            //tank
-            tank = {
-                sprite: taSprite,
-                x: (screen.width - taSprite.w)/2,
-                y: screen.height - (30 + taSprite.h)
-            };
+            tank.init()
 
             //bullets
             bullets = [];
@@ -143,22 +181,12 @@
         };
 
         function update() {
-            //tank movement
-            if(input.isDown(37)){
-                tank.x -=4;
-            }   
-            if(input.isDown(39)){
-                tank.x +=4;
-            }
             
-            tank.x = Math.max(Math.min(tank.x,screen.width - (30 + taSprite.w)), 30);
+            tank.move();
+            //32 - spacebar
+            tank.shoot(32,bullets)
 
-            //shoting bullets
-            //spacebar
-            if(input.isPressed(32)){
-                bullets.push(new Bullet(tank.x + 10,tank.y, -8, 2, 6,"#fff"));
-            }
-
+            //bullets
             for(var i = 0, len = bullets.length; i < len; i++){
                 var b = bullets[i];
                 b.update();
@@ -170,6 +198,9 @@
                     continue;
                 }
 
+                
+         
+
                 //bullet hit the cities
                 var h2 = b.height * 0.5;
                 if(cities.y < b.y+h2 < cities.y + cities.h){
@@ -180,6 +211,9 @@
                         continue;
                     }
                 }
+
+
+                
 
                 //Kill Aliens
                 for(var j = 0, len2 = aliens.length; j < len2; j++){
@@ -225,6 +259,8 @@
                     }
                 }
                 bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4,2,4,"#fff"))
+
+
             }
 
 
@@ -284,4 +320,3 @@
     </script>
 </body>
 </html>
-
