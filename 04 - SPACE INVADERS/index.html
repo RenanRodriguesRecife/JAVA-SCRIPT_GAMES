@@ -84,10 +84,32 @@
                         this.ctx.drawImage(ciSprite.img, ciSprite.x, ciSprite.y, ciSprite.w, ciSprite.h,
                         68 + 111*i, 0, ciSprite.w,ciSprite.h);
                     }
+                    
                 },
-                generateDamage: function(x,y) {},
+                //apaga o pixel
+                generateDamage: function(x,y) {
+                    x = Math.floor(x/2)*2;
+                    y = Math.floor(y/2)*2;
+
+                    this.ctx.clearRect(x-2, y-2, 4, 4);
+                    this.ctx.clearRect(x+2, y-4, 2, 4);
+                    this.ctx.clearRect(x+4, y, 2, 2);
+                    this.ctx.clearRect(x+2, y+2, 2, 2);
+                    this.ctx.clearRect(x-4, y+2, 2, 2);
+                    this.ctx.clearRect(x-6, y, 2, 2);
+                    this.ctx.clearRect(x-4, y-4, 2, 2);
+                    this.ctx.clearRect(x-2, y-6, 2, 2);
+                },
                 //verifica se o pixel é solido
-                hits: function(x,y){}
+                hits: function(x,y){
+                    y -= this.y;
+                    var data = this.ctx.getImageData(x , y, 1, 1);
+                    if(data.data[3] !== 0){
+                        this.generateDamage(x ,y)
+                        return true;
+                    }
+                    return false;
+                }
             }
             cities.init();
 
@@ -146,6 +168,17 @@
                     i--;
                     len--
                     continue;
+                }
+
+                //bullet hit the cities
+                var h2 = b.height * 0.5;
+                if(cities.y < b.y+h2 < cities.y + cities.h){
+                    if(cities.hits(b.x, b.y + h2)){
+                        bullets.splice(i, 1);
+                        i--;
+                        len--
+                        continue;
+                    }
                 }
 
                 //Kill Aliens
