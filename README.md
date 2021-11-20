@@ -6,6 +6,7 @@ https://renanrodriguesrecife.github.io/JAVA-SCRIPT_GAMES/
 <li>02 - Jogo da cobrinha usando canvas</li>
 <li>03 - PONG</li>
 <li>04 - SPACE INVADERS</li>
+<li>05 - FLAPPYBIRDS</li>
 </ul>
 
 
