@@ -18,7 +18,8 @@ https://renanrodriguesrecife.github.io/JAVA-SCRIPT_GAMES/
 - tetris
 
 - pac man
-
+- mario
+- zelda
 - outrun
 - doom
 --!>
