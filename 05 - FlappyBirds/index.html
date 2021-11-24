@@ -58,7 +58,9 @@
             },
 
             update: function(){
-                
+                var n = currentstate === state.Splash ? 10 : 5;
+                this.frame += frames % n === 0 ? 1 : 0;
+                this.frame %= this.animation.length;
             },
             draw: function(ctx){
                 ctx.save();
@@ -97,6 +99,9 @@
             canvas.height = height;
             ctx = canvas.getContext("2d");
 
+            //set current state
+            currentstate = state.Splash;
+
             document.body.appendChild(canvas);
            
             var img = new Image();
@@ -120,6 +125,9 @@
         function update(){
             frames++;
             fgpos = (fgpos - 2) % 14;
+
+            bird.update();
+            pipes.update();
         }
 
         function render(){
