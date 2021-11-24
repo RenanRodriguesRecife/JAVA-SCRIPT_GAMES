@@ -32,7 +32,7 @@ function initSprites(img){
         new Sprite(img, 156, 141, 17, 12)
     ];
 
-    s_bg = new Sprite(img, 0, 0, 139, 114);
+    s_bg = new Sprite(img, 0, 0, 138, 114);
     s_bg.color = "#70C5CF";
     s_fg = new Sprite(img, 138, 0, 112, 56);
 
