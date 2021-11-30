@@ -97,9 +97,31 @@
         },
 
         pipes = {
+            _pipes: [],
+
+            reset: function(){
+                this._pipes = [];
+            },
 
             update: function(){
-                
+                if(frames % 100 === 0){
+                    var _y = height - (s_pipeSouth.height+s_fg.height+120+200*Math.random());
+                    this.pipes.push({
+                        x: 500,
+                        y: _y,
+                        width: s_pipeSouth.width,
+                        height: s_pipeSouth.height
+                    });
+                }
+                for(var i = 0, len = this.pipes.length; i < len; i++){
+                    var p = this._pipes[i];
+                    p.x -= 2;
+                    if(p.x < -50){
+                        this._pipes.splice(i,1);
+                        i--;
+                        len--;
+                    }
+                }
             },
             draw: function(ctx){
                 
@@ -162,10 +184,16 @@
 
         function update(){
             frames++;
-            fgpos = (fgpos - 2) % 14;
 
+            if(currentstate !== states.Score){
+                fgpos = (fgpos - 2) % 14;
+                
+            }
+            if(currentstate === states.Game){
+                pipes.update();
+            }
             bird.update();
-            pipes.update();
+            
         }
 
         function render(){
