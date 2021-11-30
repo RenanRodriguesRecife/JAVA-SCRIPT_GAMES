@@ -45,7 +45,7 @@
 
         bird = {
             x: 80,
-            y: 100,
+            y: 0,
             frame: 0,
             velocity: 0,
             animation: [0, 1, 2, 1],
@@ -61,6 +61,11 @@
                 var n = currentstate === state.Splash ? 10 : 5;
                 this.frame += frames % n === 0 ? 1 : 0;
                 this.frame %= this.animation.length;
+
+                if(currentstate === state.Splash){
+                    this.y = height - 280 + 5*Math.cos(frames/10);
+                    this.rotation = 0;
+                }
             },
             draw: function(ctx){
                 ctx.save();
@@ -136,6 +141,7 @@
             s_bg.draw(ctx, s_bg.width , height - s_bg.height);
 
             bird.draw(ctx);
+            pipes.draw(ctx);
 
             s_fg.draw(ctx, fgpos, height - s_fg.height);
             s_fg.draw(ctx, fgpos + s_fg.width, height - s_fg.height);
@@ -146,3 +152,5 @@
     </script>
 </body>
 </html>
+
+20
