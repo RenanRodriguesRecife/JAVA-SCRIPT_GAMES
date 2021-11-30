@@ -106,14 +106,14 @@
             update: function(){
                 if(frames % 100 === 0){
                     var _y = height - (s_pipeSouth.height+s_fg.height+120+200*Math.random());
-                    this.pipes.push({
+                    this._pipes.push({
                         x: 500,
                         y: _y,
                         width: s_pipeSouth.width,
                         height: s_pipeSouth.height
                     });
                 }
-                for(var i = 0, len = this.pipes.length; i < len; i++){
+                for(var i = 0, len = this._pipes.length; i < len; i++){
                     var p = this._pipes[i];
                     p.x -= 2;
                     if(p.x < -50){
