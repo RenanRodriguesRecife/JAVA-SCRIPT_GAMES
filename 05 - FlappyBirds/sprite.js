@@ -54,7 +54,7 @@ function initSprites(img){
     }
 
     s_score = new Sprite(img, 138,  59, 113, 58);
-    s_plash = new Sprite(img,   0, 114,  59, 49);
+    s_splash = new Sprite(img,   0, 114,  59, 49);
 
     s_numberS = new Sprite(img, 0, 177, 6,  7);
     s_numberB = new Sprite(img, 0, 188, 7, 10);
