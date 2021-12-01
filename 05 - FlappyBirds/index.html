@@ -113,6 +113,7 @@
 
             reset: function(){
                 this._pipes = [];
+
             },
 
             update: function(){
@@ -130,6 +131,9 @@
 
                     if(i === 0){
                         
+                        //score
+                        score += p.x === bird.x ? 1 : 0;
+
 
                         //checando a colisão, calcula as diferenças de x e y e
                         //usa um vetor normal para calcular a inserção
@@ -146,7 +150,7 @@
                         var r = bird.radius*bird.radius;
                         
                         if(r > d1 || r > d2){
-                            console.log("entrou aqui")
+                            
                             currentstate = states.Score;
                         }
                     }
@@ -180,9 +184,11 @@
                     break;
                 case states.Score:
                     var mx = evt.offsetX, my = evt.offsetY;
-                    if(okbtn.x < mx && mx < okbtn.x + okbtn.widht &&
+
+                    if(okbtn.x < mx && mx < okbtn.x + okbtn.width &&
                        okbtn.y < my && my < okbtn.y + okbtn.height
                        ){
+                        
                         pipes.reset();
                         currentstate = states.Splash;
                         score = 0;
@@ -275,6 +281,8 @@
                 s_text.GameOver.draw(ctx, width2 - s_text.GameOver.width/2, height-400);
                 s_score.draw(ctx, width2 - s_score.width/2, height-340);
                 s_buttons.Ok.draw(ctx, okbtn.x, okbtn.y);
+            }else{
+                s_numberB.draw(ctx, null, 20, score, width2);
             }
         }
 
