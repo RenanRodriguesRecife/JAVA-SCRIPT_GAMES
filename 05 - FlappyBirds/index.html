@@ -293,6 +293,12 @@
 
                 s_numberS.draw(ctx, width2-47, height-304, score, null,10);
                 s_numberS.draw(ctx, width2-47, height-262, best, null,10);
+
+                if(score === 0)                  { s_medals.White.draw(ctx, width2-89, height-298);}
+                else if(score > 0 && score < 3)  {s_medals.Bronze.draw(ctx, width2-89, height-298);}
+                else if(score >= 3 && score < 5) {s_medals.Silver.draw(ctx, width2-89, height-298);}
+                else if(score >= 5 )             {s_medals.Gold.draw(ctx, width2-89, height-298);}
+
             }else{
                 s_numberB.draw(ctx, null, 20, score, width2);
             }
@@ -304,3 +310,4 @@
 </html>
 
 
+27
