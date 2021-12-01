@@ -9,7 +9,11 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <title>Document</title>
-
+    <audio id="audio_die" src="res/sfx_die.ogg" ></audio>
+    <audio id="audio_hit" src="res/sfx_hit.ogg" ></audio>
+    <audio id="audio_point" src="res/sfx_point.ogg" ></audio>
+    <audio id="audio_smooshing" src="res/sfx_swooshing.ogg" ></audio>
+    <audio id="audio_wing" src="res/sfx_wing.ogg" ></audio>
     <script src="sprite.js"></script>
     <style>
         canvas{
@@ -25,6 +29,12 @@
 </head>
 <body>
     <script>
+        const audio_wing = document.getElementById("audio_wing")
+        const audio_smooshing = document.getElementById("audio_smooshing")
+        const audio_point = document.getElementById("audio_point")
+        const audio_hit = document.getElementById("audio_hit")
+        const audio_die = document.getElementById("audio_die")
+
         var canvas,
         ctx,
         width,
@@ -58,6 +68,7 @@
 
             jump: function(){
                 this.velocity = -this._jump;
+                audio_wing.play();
             },
 
             update: function(){
@@ -73,7 +84,10 @@
                     this.y += this.velocity;
                     if(this.y>= height - s_fg.height-10){
                         this.y = height - s_fg.height-10;
+                        
                         if(currentstate === states.Game){
+                            audio_hit.play();
+                            setTimeout(function(){audio_die.play();},400);
                             currentstate = states.Score;
                         }
                         this.velocity = this._jump;
@@ -132,8 +146,11 @@
                     if(i === 0){
                         
                         //score
-                        score += p.x === bird.x ? 1 : 0;
-
+                        //score += p.x === bird.x ? 1 : 0;
+                        if(p.x === bird.x){
+                            score += 1;
+                            audio_point.play();
+                        }
 
                         //checando a colisão, calcula as diferenças de x e y e
                         //usa um vetor normal para calcular a inserção
@@ -150,8 +167,10 @@
                         var r = bird.radius*bird.radius;
                         
                         if(r > d1 || r > d2){
-                            
+                            audio_hit.play();
+                            setTimeout(function(){audio_die.play();},400);
                             currentstate = states.Score;
+
                         }
                     }
 
@@ -195,7 +214,7 @@
                     if(okbtn.x < mx && mx < okbtn.x + okbtn.width &&
                        okbtn.y < my && my < okbtn.y + okbtn.height
                        ){
-                        
+                        audio_smooshing.play();
                         pipes.reset();
                         currentstate = states.Splash;
                         score = 0;
@@ -310,4 +329,3 @@
 </html>
 
 
-27
