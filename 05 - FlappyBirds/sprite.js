@@ -10,7 +10,8 @@ s_score,
 s_plash,
 s_buttons,
 s_numberS,
-s_numberB;
+s_numberB,
+s_medals;
 
 function Sprite(img, x, y, width, height){
     this.img = img;
@@ -51,6 +52,13 @@ function initSprites(img){
         Score:  new Sprite(img,  79, 191, 40, 14),
         Ok:     new Sprite(img, 119, 191, 40, 14),
         Start:  new Sprite(img, 159, 191, 40, 14)
+    }
+
+    s_medals = {
+        White:   new Sprite(img, 173, 114, 25, 22),
+        Bronze:  new Sprite(img, 198, 137, 25, 22),
+        Silver:  new Sprite(img, 198, 114, 25, 22),
+        Gold:    new Sprite(img, 173, 137, 25, 22),
     }
 
     s_score = new Sprite(img, 138,  56, 113, 58);
