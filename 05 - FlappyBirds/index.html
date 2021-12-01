@@ -179,6 +179,15 @@
                     bird.jump();
                     break;
                 case states.Score:
+                    var mx = evt.offsetX, my = evt.offsetY;
+                    if(okbtn.x < mx && mx < okbtn.x + okbtn.widht &&
+                       okbtn.y < my && my < okbtn.y + okbtn.height
+                       ){
+                        pipes.reset();
+                        currentstate = states.Splash;
+                        score = 0;
+                    }
+                    break;
             }
         }
 
