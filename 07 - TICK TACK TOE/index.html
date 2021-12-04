@@ -7,9 +7,14 @@
     <title>Document</title>
 
     <script>
+        var canvas, ctx;
+
         window.onload = function main(){
-            canvas = 
-            ctx 
+            canvas = document.createElement("canvas");
+            canvas.width = canvas.height = 200;
+            ctx = canvas.getContext("2d");
+            
+            document.body.appendChild(canvas);
 
             init();
             tick();
@@ -28,7 +33,7 @@
         function update(){}
 
         function render(){}
-        
+
     </script>
 </head>
 <body>
