@@ -60,6 +60,8 @@
                 _ctx = _c.getContext("2d");
 
                 _ctx.fillStyle = "skyblue";
+                _ctx.lineWidth = 4;
+                _ctx.strokeStyle = "white";
 
                 //blank
                 _ctx.fillRect(0,0,100,100);
@@ -67,9 +69,17 @@
                 Tile.BLANK.src = _c.toDataURL();
 
                 //nought
+                _ctx.fillRect(0, 0, 100, 100);
 
+                _ctx.beginPath();
+                _ctx.arc(50,50, 30, 0, 2*Math.PI);
+                _ctx.stroke();
 
-                tile = Tile.BLANK;
+                Tile.NOUGHT = new Image();
+                Tile.NOUGHT.src = _c.toDataURL();
+                
+
+                tile = Tile.NOUGHT;
             }
 
             this.update = function(){
