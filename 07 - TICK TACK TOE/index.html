@@ -62,6 +62,7 @@
                 _ctx.fillStyle = "skyblue";
                 _ctx.lineWidth = 4;
                 _ctx.strokeStyle = "white";
+                _ctx.lineCap = "round";
 
                 //blank
                 _ctx.fillRect(0,0,100,100);
@@ -78,8 +79,20 @@
                 Tile.NOUGHT = new Image();
                 Tile.NOUGHT.src = _c.toDataURL();
                 
+                //cross
+                _ctx.fillRect(0, 0, 100, 100);
 
-                tile = Tile.NOUGHT;
+                _ctx.beginPath();
+                _ctx.moveTo(20,20);
+                _ctx.lineTo(80,80);
+                _ctx.moveTo(80,20);
+                _ctx.lineTo(20,80);
+                _ctx.stroke();
+
+                Tile.CROSS = new Image();
+                Tile.CROSS.src = _c.toDataURL();
+
+                tile = Tile.CROSS;
             }
 
             this.update = function(){
