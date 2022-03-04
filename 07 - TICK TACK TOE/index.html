@@ -34,6 +34,7 @@
 
         function init(){
             data = new Tile(20,20);
+            data.flip(Tile.NOUGHT);
         }
 
         function tick(){
@@ -43,16 +44,18 @@
         }
 
         function update(){
-
+            data.update();
         }
 
         function render(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             data.draw(ctx);
         }
 
         function Tile(x ,y){
             var x = x, y = y;
             var tile = Tile.BLANK;
+            var anim = 0;
 
             if(tile == null){
                 var _c = document.createElement("canvas");
@@ -95,12 +98,38 @@
                 tile = Tile.CROSS;
             }
 
-            this.update = function(){
+
+            this.flip = function(next){
+                tile = next;
+                anim = 1;
 
             }
 
+            this.update = function(){
+                if (anim > 0){
+                    anim -= 0.02;
+                }
+            }
+
             this.draw = function(ctx){
-                ctx.drawImage(tile,x , y);
+                if(anim <= 0){
+                    ctx.drawImage(tile,x , y);
+                }
+                var res = 2;
+                var t = anim > 0.5 ? Tile.BlANK : tile;
+                var p = -Math.abs(2*anim -1) +1;
+
+                for(var i = 0; i < 100; i += res){
+                    var j = 50 - (anim > 0.5 ? 100 - i : i);
+
+                    ctx.drawImage(t, i, 0, res, 100, 
+                    x + i - p*i + 50*p,
+                    y - j*p*0.2,
+                    res,
+                    100 + j*p*0.4
+                    );
+                }
+
             }
         }
 
