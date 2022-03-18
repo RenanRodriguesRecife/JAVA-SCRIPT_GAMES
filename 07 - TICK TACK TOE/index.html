@@ -20,6 +20,7 @@
     <script>
         var canvas, ctx;
         var data;
+        var player;
 
         window.onload = function main(){
             canvas = document.createElement("canvas");
@@ -44,7 +45,7 @@
                 }
             }
             
-          
+            player = Tile.NOUGHT;
         }
 
         function tick(){
@@ -79,7 +80,8 @@
                 if(data[idx].hasData()){
                     return;
                 }
-                data[idx].flip(Tile.NOUGHT);
+                data[idx].flip(player);
+                player = player === Tile.NOUGHT ? Tile.CROSS : Tile.NOUGHT;
             }
         }
 
