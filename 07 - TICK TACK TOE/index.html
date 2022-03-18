@@ -28,6 +28,8 @@
             
             document.body.appendChild(canvas);
 
+            canvas.addEventListener("mousedown",mouseDown)
+
             init();
             tick();
         }
@@ -41,8 +43,7 @@
                     data.push(new Tile(x, y));
                 }
             }
-            data[0].flip(Tile.NOUGHT);
-
+            
           
         }
 
@@ -64,6 +65,13 @@
             for(var i = data.length; i--;){
                 data[i].draw(ctx);    
             }
+        }
+
+        function mouseDown(evt){
+            var el = evt.target;
+            var px = evt.clientX - el.offsetLeft;
+            var py = evt.clientY - el.offsetTop;
+            console.log(px + ", " + py);
         }
 
         function Tile(x ,y){
@@ -109,7 +117,7 @@
                 Tile.CROSS = new Image();
                 Tile.CROSS.src = _c.toDataURL();
 
-                tile = Tile.CROSS;
+                tile = Tile.BLANK;
             }
 
 
