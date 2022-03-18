@@ -8,6 +8,7 @@
 <li>04 - SPACE INVADERS</li>
 <li>05 - FLAPPYBIRDS</li>
 <li>06 - ASTEROIDS</li>
+<li>07 - TICK TACK TOE</li>
 </ul>
 
 
