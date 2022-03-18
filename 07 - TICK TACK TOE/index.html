@@ -71,7 +71,12 @@
             var el = evt.target;
             var px = evt.clientX - el.offsetLeft;
             var py = evt.clientY - el.offsetTop;
-            console.log(px + ", " + py);
+            // console.log(px + ", " + py);
+            if(px % 120 >= 20 && py % 120 >= 20){
+                var idx = Math.floor(px/120);
+                idx += Math.floor(py/120)*3;
+                console.log(idx);
+            }
         }
 
         function Tile(x ,y){
