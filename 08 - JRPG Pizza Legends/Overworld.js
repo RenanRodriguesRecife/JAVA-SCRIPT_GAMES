@@ -17,8 +17,8 @@ class Overworld{
 
 
         //hero
-        const x = 0;
-        const y = 0;
+        const x = 1;
+        const y = 4;
         const hero = new Image();
         hero.onload = () => {
             this.ctx.drawImage(
@@ -27,8 +27,8 @@ class Overworld{
                 0,//top cut
                 32,//width of cut
                 32,//height of cut
-                x,
-                y,
+                x * 16 - 8,
+                y * 16 - 18,
                 32,
                 32
                 );
