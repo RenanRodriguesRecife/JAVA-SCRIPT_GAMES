@@ -11,3 +11,6 @@ class Sprite{
         this.currentAnimationFrame = 0;
     }
 }
+
+
+7:03
