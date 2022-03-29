@@ -22,6 +22,7 @@ var player = new function(){
     this.y = 0;
     this.ySpeed = 0;
     this.rot = 0;
+    this.rSpeed = 0;
 
     this.img = new Image();
     this.img.src = "moto.png";
@@ -39,11 +40,15 @@ var player = new function(){
             this.y = p1 - 15;
             grounded = 1;
         }
+        var angle = Math.atan2((p2-15) - this.y, (this.x+5) - this.x);
+
         this.y += this.ySpeed;
 
-        var angle = Math.atan2((p2-15) - this.y, (this.x+5) - this.x);
-        
-        this.rot = angle;
+        if(grounded){
+            this.rot -= (this.rot - angle)*0.5;
+            this.rSpeed = this.rSpeed - (angle - this.rot);
+        }
+        this.rot -= this.rSpeed * 0.1;
         ctx.save();
         ctx.translate(this.x,this.y);
         ctx.rotate(this.rot);
@@ -54,8 +59,11 @@ var player = new function(){
 
 
 var t = 0;//time
+var speed = 0;
+var k = {ArrowUp:0, ArrowDown:0, ArrowLeft:0, ArrowRight:0};
 function loop(){
-    t+=1;
+    speed -= (speed - (k.ArrowUp - k.ArrowDown)) * 0.01;
+    t+=5 * speed;
     ctx.fillStyle = "#19f";
     ctx.fillRect(0,0,c.width,c.height);
 
@@ -71,5 +79,6 @@ function loop(){
     player.draw();
     requestAnimationFrame(loop);
 }
-
+onkeydown = d=> k[d.key] = 1;
+onkeyup = d=> k[d.key] = 0;
 loop();
