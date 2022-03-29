@@ -17,6 +17,42 @@ var noise =x=>{
 }
 
 
+var player = new function(){
+    this.x = c.width/2;
+    this.y = 0;
+    this.ySpeed = 0;
+    this.rot = 0;
+
+    this.img = new Image();
+    this.img.src = "moto.png";
+
+    this.draw = function(){
+        var p1 = c.height - noise(t + this.x) * 0.25;
+        var p2 = c.height - noise(t+5 + this.x) * 0.25;
+
+
+        var grounded = 0;
+        if(p1 - 15 > this.y){
+            this.ySpeed += 0.1;
+        }else{
+            this.ySpeed -= this.y - (p1-15);
+            this.y = p1 - 15;
+            grounded = 1;
+        }
+        this.y += this.ySpeed;
+
+        var angle = Math.atan2((p2-15) - this.y, (this.x+5) - this.x);
+        
+        this.rot = angle;
+        ctx.save();
+        ctx.translate(this.x,this.y);
+        ctx.rotate(this.rot);
+        ctx.drawImage(this.img, -15,-15,30,30);
+        ctx.restore();
+    }
+}
+
+
 var t = 0;//time
 function loop(){
     t+=1;
@@ -32,7 +68,7 @@ function loop(){
     ctx.lineTo(c.width, c.height);
     ctx.fill();
     
-
+    player.draw();
     requestAnimationFrame(loop);
 }
 
