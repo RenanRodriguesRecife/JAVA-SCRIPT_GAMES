@@ -22,11 +22,13 @@ function loop(){
 
     ctx.fillStyle = "black";
     ctx.beginPath();
+    ctx.moveTo(0, c.height);
     for (let i = 0; i < c.width; i++){
         ctx.lineTo(i, noise(i));
     }
+    ctx.lineTo(c.width, c.height);
     ctx.fill();
-
+    
 
     requestAnimationFrame(loop);
 }
