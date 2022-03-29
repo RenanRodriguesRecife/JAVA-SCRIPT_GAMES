@@ -40,11 +40,20 @@ var player = new function(){
             this.y = p1 - 15;
             grounded = 1;
         }
+
+        if(!playing || grounded && Math.abs(this.rot) > Math.PI * 0.5){
+            playing = false;
+            this.rSpeed = 5;
+            k.ArrowUp = 1;
+            this.x -= speed * 5;
+        }
+
+
         var angle = Math.atan2((p2-15) - this.y, (this.x+5) - this.x);
 
         this.y += this.ySpeed;
 
-        if(grounded){
+        if(grounded && playing){
             this.rot -= (this.rot - angle)*0.5;
             this.rSpeed = this.rSpeed - (angle - this.rot);
         }
@@ -64,10 +73,11 @@ var player = new function(){
 
 var t = 0;//time
 var speed = 0;
+var playing = true;
 var k = {ArrowUp:0, ArrowDown:0, ArrowLeft:0, ArrowRight:0};
 function loop(){
     speed -= (speed - (k.ArrowUp - k.ArrowDown)) * 0.01;
-    t+=5 * speed;
+    t+=10 * speed;
     ctx.fillStyle = "#19f";
     ctx.fillRect(0,0,c.width,c.height);
 
