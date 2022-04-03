@@ -28,6 +28,8 @@ class Overworld{
             y: 9,
             src: "./images/characters/people/npc1.png"
         })
+
+        //set time out para dar tempo de carregar as imágens
         setTimeout(()=> {
             hero.sprite.draw(this.ctx);
             npc1.sprite.draw(this.ctx);
