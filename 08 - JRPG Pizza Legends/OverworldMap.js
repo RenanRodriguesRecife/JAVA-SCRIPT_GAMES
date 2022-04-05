@@ -17,7 +17,7 @@ class OverworldMap{
     }
 }
 
-window.OverworldMap = {
+window.OverworldMaps = {
     DemoRoom:{
         lowerSrc: "./images/maps/DemoLower.png",
         upperSrc: "./images/maps/DemoUpper.png",
@@ -26,10 +26,10 @@ window.OverworldMap = {
                 x: 5,
                 y: 6,
             }),
-            npc1: newGameObject({
+            npc1: new GameObject({
                 x:7,
                 y:9,
-                src: "/images/characters/people/npc1.png"
+                src: "./images/characters/people/npc1.png"
             })
         }
     },
@@ -42,15 +42,15 @@ window.OverworldMap = {
                 x: 3,
                 y: 1,
             }),
-            npcA: newGameObject({
+            npcA: new GameObject({
                 x:9,
                 y:2,
-                src: "/images/characters/people/npc1.png"
+                src: "./images/characters/people/npc1.png"
             }),
-            npcB: newGameObject({
+            npcB: new GameObject({
                 x:10,
                 y:4,
-                src: "/images/characters/people/npc2.png"
+                src: "./images/characters/people/npc2.png"
             })
         }
     },
