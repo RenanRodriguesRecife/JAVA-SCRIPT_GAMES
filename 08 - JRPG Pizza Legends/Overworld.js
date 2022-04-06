@@ -4,6 +4,7 @@ class Overworld{
         this.canvas = this.element.querySelector(".game-canvas");
         this.ctx = this.canvas.getContext("2d");
         this.map = null;
+        this.directionInput = null;
     }
 
     startGameLoop(){
@@ -17,7 +18,9 @@ class Overworld{
 
             //Draw Game Objects
             Object.values(this.map.gameObject).forEach(object =>{
-                object.update();
+                object.update({
+                    arrow: this.directionInput.direction
+                });
                 object.sprite.draw(this.ctx);
             })
 
@@ -34,6 +37,8 @@ class Overworld{
 
     init(){
         this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+        this.directionInput = new DirectionInput();
+        this.directionInput.init();
         this.startGameLoop();
     }
 }
