@@ -22,11 +22,11 @@ window.OverworldMaps = {
         lowerSrc: "./images/maps/DemoLower.png",
         upperSrc: "./images/maps/DemoUpper.png",
         gameObject:{
-            hero: new GameObject({
+            hero: new Person({
                 x: utils.withGrid(5),
                 y: utils.withGrid(6),
             }),
-            npc1: new Person({
+            npc1: new GameObject({
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
                 src: "./images/characters/people/npc1.png"
