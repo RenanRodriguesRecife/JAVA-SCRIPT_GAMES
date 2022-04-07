@@ -35,7 +35,7 @@ class Sprite{
         this.currentAnimationFrame = 0;
 
         //número de ciclos que um frame de uma animaação vai durar
-        this.animationFrameLimit = config.animationFrameLimit || 16;
+        this.animationFrameLimit = config.animationFrameLimit || 8;
         this.animationFrameProgress = this.animationFrameLimit;
 
         //Reference the game object
@@ -44,6 +44,14 @@ class Sprite{
 
     get frame(){
         return this.animations[this.currentAnimation][this.currentAnimationFrame];
+    }
+
+    setAnimation(key){
+        if(this.currentAnimation !== key){
+            this.currentAnimation = key;
+            this.currentAnimationFrame = 0;
+            this.animationFrameProgress = this.animationFrameLimit;
+        }
     }
 
     updateAnimationProgress(){
@@ -79,4 +87,3 @@ class Sprite{
         this.updateAnimationProgress();
     }
 }
-
