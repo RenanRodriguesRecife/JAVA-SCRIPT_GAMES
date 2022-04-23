@@ -1,6 +1,6 @@
 class OverworldMap{
     constructor(config){
-        this.gameObject = config.gameObject;
+        this.gameObjects = config.gameObjects;
         this.walls = config.walls || {};
 
         this.lowerImage = new Image();
@@ -26,10 +26,12 @@ class OverworldMap{
     }
 
     mountObjects(){
-        Object.values(this.gameObject).forEach(e=>{
+        
+        Object.keys(this.gameObjects).forEach(key=>{
             // 
-            
-            e.mount(this);
+            let object = this.gameObjects[key];
+            object.id = key;
+            object.mount(this);
         })
     }
 
@@ -52,11 +54,16 @@ window.OverworldMaps = {
     DemoRoom:{
         lowerSrc: "./images/maps/DemoLower.png",
         upperSrc: "./images/maps/DemoUpper.png",
-        gameObject:{
-            npc1: new Person({
+        gameObjects:{
+            npcA: new Person({
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
                 src: "./images/characters/people/npc1.png"
+            }),
+            npcB: new Person({
+                x: utils.withGrid(3),
+                y: utils.withGrid(7),
+                src: "./images/characters/people/npc2.png"
             }),
             hero: new Person({
                 isPlayerControlled: true,
@@ -75,7 +82,7 @@ window.OverworldMaps = {
     Kitchen:{
         lowerSrc: "./images/maps/KitchenLower.png",
         upperSrc: "./images/maps/KitchenUpper.png",
-        gameObject:{
+        gameObjects:{
             hero: new GameObject({
                 x: 3,
                 y: 5,
