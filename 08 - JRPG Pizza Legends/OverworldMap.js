@@ -25,6 +25,14 @@ class OverworldMap{
         return this.walls[`${x},${y}`]||false;
     }
 
+    mountObjects(){
+        Object.values(this.gameObject).forEach(e=>{
+            // 
+            
+            e.mount(this);
+        })
+    }
+
     addWall(x,y){
         this.walls[`${x},${y}`] = true;
     }
