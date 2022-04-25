@@ -67,7 +67,7 @@ window.OverworldMaps = {
                    { type: "stand", direction: "up", time: 800},
                    { type: "stand", direction: "right", time: 1200},
                    { type: "stand", direction: "up", time: 300},
-            }),
+                ]}),
             npcB: new Person({
                 x: utils.withGrid(3),
                 y: utils.withGrid(7),
