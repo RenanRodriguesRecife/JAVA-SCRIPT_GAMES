@@ -10,12 +10,16 @@
         body{
             padding: 0;
             margin: 0;
+            height: 100%;
         }
-        body{
+        body,
+        canvas{
+            display: flex;
             background-color: black;
         }
         canvas{
-            background-color: black;
+            width: 100%;
+            object-fit: contain;
         }
     </style>
     <script defer src="./index.js"></script>
