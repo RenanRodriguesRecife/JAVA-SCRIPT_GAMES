@@ -17,9 +17,15 @@ window.onload = function(){
         y: 0,
     }
 
+    let velocity = 1;
+
 
     function frame(){
-        position.x += 1;
+        position.x += velocity;
+
+        if(position.x > GameViewport.WIDTH - ryu.width|| position.x < 0){
+            velocity = -velocity;
+        }
 
         context.clearRect(0, 0,GameViewport.WIDTH,GameViewport.HEIGHT);
 
