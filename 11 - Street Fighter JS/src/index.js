@@ -1,3 +1,6 @@
+import { drawRyu, updateRyu} from './ryu.js';
+import { drawBackground } from './stage.js';
+
 const GameViewport = {
     WIDTH: 384,
     HEIGHT: 224,
@@ -11,7 +14,9 @@ window.onload = function(){
     canvasEl.height = GameViewport.HEIGHT;
 
     function frame(){
-  
+        updateRyu(context);
+        drawBackground(context);
+        drawRyu(context);
         window.requestAnimationFrame(frame);
     }
 
