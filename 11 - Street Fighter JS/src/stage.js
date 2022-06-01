@@ -1,6 +1,6 @@
-const  background = document.querySelectorAll('img[alt="background"]');
+const  background = document.querySelector('img[alt="background"]');
 
-export function drawBackground(){
+export function drawBackground(context){
     context.drawImage(background, 0,0);
 }
 
