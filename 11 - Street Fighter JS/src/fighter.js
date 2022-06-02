@@ -1,4 +1,4 @@
-class Fighter{
+export class Fighter{
     constructor(name, x, y, velocity){
         this.name = name;
         this.image = new Image();
