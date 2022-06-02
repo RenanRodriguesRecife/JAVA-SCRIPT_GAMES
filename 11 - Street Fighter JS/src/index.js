@@ -8,7 +8,7 @@ const GameViewport = {
     HEIGHT: 224,
 }
 
-window.onload = function(){
+window.addEventListener('load', function(){
     const canvasEl = document.querySelector('canvas');
     const context = canvasEl.getContext('2d');
 
@@ -27,6 +27,7 @@ window.onload = function(){
     let secondsPassed = 0;
 
     function frame(time){
+        window.requestAnimationFrame(frame);
         secondsPassed = (time - previousTime)/1000;
         previousTime = time;
 
@@ -39,13 +40,13 @@ window.onload = function(){
             entity.draw(context);
         }
     
-        window.requestAnimationFrame(frame);
+        
     }
 
     window.requestAnimationFrame(frame);
 
     console.log(context)
-}
+});
 
 
 //função frame loop
