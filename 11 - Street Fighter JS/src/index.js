@@ -39,8 +39,6 @@ window.addEventListener('load', function(){
         for(const entity of entities){
             entity.draw(context);
         }
-    
-        
     }
 
     window.requestAnimationFrame(frame);
