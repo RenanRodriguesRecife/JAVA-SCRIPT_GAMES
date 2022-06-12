@@ -234,6 +234,27 @@
             }
         }
 
+        function collision(x, y, map)
+        {
+            
+            for(let i = 0; i< level.length; i++){
+                
+                for (let j = 0; j < level[i].length; j++){
+                    if(map[i][j]!=2)
+                    {
+                        if(x <= j*16 + 16 
+                        && x + 12 >= j*16
+                        && y + 10 <= i*16 + 16
+                        && y + 16 >= i*16)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
         function draw (){
             setTimeout(function(){
                 requestAnimationFrame(draw);
