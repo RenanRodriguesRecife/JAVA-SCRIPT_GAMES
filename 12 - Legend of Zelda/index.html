@@ -35,8 +35,22 @@
 
         document.body.style.zoom = "300%";
 
+
+        //world img
         let worldTiles = new Image();
         worldTiles.src = "./img/tiles-overworld.png"
+
+        //character img
+        let link = new Image();
+        link.src = "./img/link.png"
+
+        //character anim vars
+        let animationCounter = 0;
+        let currentAnimation = 0;
+        let animationSpeed = 10;
+        let linkX = 116;
+        let linkY = 135;
+
 
         //key vars
         let rightPressed = false;
@@ -91,22 +105,115 @@
         {
             if(e.keyCode == 37)
             {
-                leftPressed = true;
+                leftPressed = false;
             }
             else if(e.keyCode == 39)
             {
-                rightPressed = true;
+                rightPressed = false;
             }
             else if(e.keyCode == 38)
             {
-                upPressed = true;
+                upPressed = false;
             }
             else if(e.keyCode == 40)
             {
-                downPressed = true;
+                downPressed = false;
             }
         }
 
+
+        function drawLink()
+        {
+            let speed = 2;
+            animationCounter++;
+
+            if(leftPressed)
+            {
+                linkX -= speed;
+                if(currentAnimation == 0){
+                    ctx.drawImage(link, 30, 0, 16, 16, linkX, linkY, 16, 16);
+                }else if(currentAnimation == 1){
+                    ctx.drawImage(link, 30, 30, 16,16,linkX, linkY, 16, 16);
+                }
+                if(animationCounter >= 6){
+                    currentAnimation++;
+                    animationCounter = 0;
+                    if(currentAnimation > 1)
+                    {
+                        currentAnimation = 0;
+                    }
+                }
+            }
+            else if(rightPressed)
+            {
+                linkX += speed;
+                if(currentAnimation == 0){
+                    ctx.drawImage(link, 91, 0, 16, 16, linkX, linkY, 16, 16);
+                }else if(currentAnimation == 1){
+                    ctx.drawImage(link, 91, 30, 16,16,linkX, linkY, 16, 16);
+                }
+                if(animationCounter >= 6){
+                    currentAnimation++;
+                    animationCounter = 0;
+                    if(currentAnimation > 1)
+                    {
+                        currentAnimation = 0;
+                    }
+                }
+            }
+            else if(upPressed)
+            {
+                linkY -= speed;
+                if(currentAnimation == 0){
+                    ctx.drawImage(link, 62, 0, 16, 16, linkX, linkY, 16, 16);
+                }else if(currentAnimation == 1){
+                    ctx.drawImage(link, 62, 30, 16,16,linkX, linkY, 16, 16);
+                }
+                if(animationCounter >= 6){
+                    currentAnimation++;
+                    animationCounter = 0;
+                    if(currentAnimation > 1)
+                    {
+                        currentAnimation = 0;
+                    }
+                }
+            }
+            else if(downPressed)
+            {
+                linkY += speed;
+                if(currentAnimation == 0){
+                    ctx.drawImage(link, 0, 0, 16, 16, linkX, linkY, 16, 16);
+                }else if(currentAnimation == 1){
+                    ctx.drawImage(link, 0, 30, 16,16,linkX, linkY, 16, 16);
+                }
+                if(animationCounter >= 6){
+                    currentAnimation++;
+                    animationCounter = 0;
+                    if(currentAnimation > 1)
+                    {
+                        currentAnimation = 0;
+                    }
+                }
+            }
+            else{
+                if(lastButtonPressed == "down")
+                {
+                    ctx.drawImage(link, 0, 0, 16, 16, linkX, linkY, 16, 16);
+                }
+                else if(lastButtonPressed == "up")
+                {
+                    ctx.drawImage(link, 62, 0, 16, 16, linkX, linkY, 16, 16);
+                }
+                else if(lastButtonPressed == "right")
+                {
+                    ctx.drawImage(link, 91, 0, 16, 16, linkX, linkY, 16, 16);
+                }
+                else if(lastButtonPressed == "left")
+                {
+                    ctx.drawImage(link, 30, 0, 16, 16, linkX, linkY, 16, 16);
+                }
+            }
+        }
 
         function drawMap(level){
      
@@ -134,7 +241,7 @@
                 ctx.fillRect(0,0,256,240);
 
                 drawMap(map7_7);
-                
+                drawLink();
             },1000/fps);
         }
         draw();
