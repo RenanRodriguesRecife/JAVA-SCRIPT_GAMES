@@ -19,11 +19,20 @@ var Game = Class.extend({
            if(self.nextState !== States.NO_CHANGE){
             switch(self.nextState){
                 case States.MENU:
+                    self.currentState = new States(self);
+                    break;
                 case States.GAME:
+                    self.currentState = new States(self);
+                    break;
                 case States.END:
+                    self.currentState = new States(self);
+                    break;
             }
             self.nextState = States.NO_CHANGE;
            }
+           self.currentState.handleInput();
+           self.currentState.update();
+           self.currentState.render(self.canvas.ctx);
         });
     }
 })
