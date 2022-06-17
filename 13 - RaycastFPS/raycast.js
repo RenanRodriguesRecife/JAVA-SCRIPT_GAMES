@@ -6,9 +6,11 @@ var canvasWidth = 500;
 var canvasHeight = 500;
 
 var scenery;
+var player; 
 
 const wallColor = '#000000';
 const floorColor = '#666666';
+const playerColor = '#FFFFFF';
 
 var level1 = [
     [1,1,1,1,1,1,1,1,1,1],
@@ -58,6 +60,31 @@ class Level{
     }
 }
 
+
+class Player{
+    constructor(ctx,scenery,x,y){
+        this.ctx = ctx;
+        this.scenery = scenery;
+
+        this.x = x;
+        this.y = y;
+
+        this.move = 0; //0 = parado 1 = avanço  - 1 = trás 
+        this.rotate = 0; // 1 = esquerda -1 = direita
+
+        this.rotateAngle = 0;
+        this.velMove = 3; //Pixels
+        this.velRotate = 3*(Math.PI/180); //Graus
+
+    }
+
+    draw(){
+        //Ponto
+        this.ctx.fillStyle = playerColor;
+        this.ctx.fillRect(this.x-3, this.y-3,6,6);
+    }
+}
+
 function init(){
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
@@ -66,7 +93,7 @@ function init(){
     canvas.height = canvasHeight;
 
     scenery = new Level(canvas,ctx,level1);
-
+    player = new Player(ctx,scenery,100,100);
     setInterval(function(){main();},1000/FPS)
 }
 
@@ -77,4 +104,5 @@ function eraseCanvas(){
 
 function main(){
     scenery.draw();
+    player.draw();
 }
