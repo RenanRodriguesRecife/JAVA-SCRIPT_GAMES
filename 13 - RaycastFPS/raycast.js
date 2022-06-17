@@ -7,6 +7,9 @@ var canvasHeight = 500;
 
 var scenery;
 
+const wallColor = '#000000';
+const floorColor = '#666666';
+
 var level1 = [
     [1,1,1,1,1,1,1,1,1,1],
     [1,0,0,0,0,0,0,0,0,1],
@@ -35,14 +38,28 @@ class Level{
         this.widthC = this.canvas.width;
 
         //dimenções dos tales
-        this.heightT = parseInt(this.heightC, this.heightM);
-        this.widthT = parteInt(this.width/this.widthM)
+        this.heightT = parseInt(this.heightC/this.heightM);
+        this.widthT = parseInt(this.widthC/this.widthM)
+    }
+
+    draw(){
+        var color;
+        for(var y=0; y<this.heightM;y++){
+            for(var x=0;x<this.widthM;x++){
+                if(this.matriz[y][x]==1){
+                    color = wallColor;
+                }else{
+                    color = floorColor;
+                }
+                this.ctx.fillStyle = color;
+                this.ctx.fillRect(x * this.widthT,y * this.heightT,this.widthT,this.heightT);
+            }
+        }
     }
 }
 
 function init(){
     canvas = document.getElementById('canvas');
-    console.log(canvas)
     ctx = canvas.getContext('2d');
 
     canvas.width = canvasWidth;
@@ -59,5 +76,5 @@ function eraseCanvas(){
 }
 
 function main(){
-    console.log("frame")
+    scenery.draw();
 }
