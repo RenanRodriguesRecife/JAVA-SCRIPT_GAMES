@@ -19,7 +19,7 @@ var GameState = State.extend({
     },  
 
     update: function(){
-        
+        this.poly.update();
     },
 
     render: function(ctx){
