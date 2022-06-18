@@ -15,22 +15,23 @@ var Game = Class.extend({
     },
 
     run: function(){
+        var self = this;
         this.canvas.animate(function(){
            if(self.nextState !== States.NO_CHANGE){
             switch(self.nextState){
                 case States.MENU:
-                    self.currentState = new States(self);
+                    self.currentState = new State(self);
                     break;
                 case States.GAME:
-                    self.currentState = new States(self);
+                    self.currentState = new GameState(self);
                     break;
                 case States.END:
-                    self.currentState = new States(self);
+                    self.currentState = new State(self);
                     break;
             }
             self.nextState = States.NO_CHANGE;
            }
-           self.currentState.handleInput();
+           self.currentState.handleInputs();
            self.currentState.update();
            self.currentState.render(self.canvas.ctx);
         });
