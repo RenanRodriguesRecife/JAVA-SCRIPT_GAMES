@@ -13,17 +13,26 @@ var GameState = State.extend({
     init: function(game){
         this._super(game);
 
+    this.asteroids = [];
+    for(var i = 0; i < 10; i++){
         var n = Math.round(Math.random()*(Points.ASTEROIDS.length-1))
-        this.poly = new Asteroid(Points.ASTEROIDS[n],10,100,100)
-        
+        var poly = new Asteroid(Points.ASTEROIDS[n],10,100,100)
+        poly.maxX = game.canvas.ctx.width;
+        poly.maxY = game.canvas.ctx.height;
+        this.asteroids.push(poly);
+    }
     },  
 
     update: function(){
-        this.poly.update();
+        for (var i = 0; len = this.asteroids.length, i < len; i++){
+            this.asteroids[i].update();
+        }
     },
 
     render: function(ctx){
         ctx.clearAll();
-        this.poly.draw(ctx);
+        for (var i = 0; len = this.asteroids.length, i < len; i++){
+            this.asteroids[i].draw(ctx);
+        }
     }
 })
