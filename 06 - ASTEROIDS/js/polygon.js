@@ -5,7 +5,16 @@ var Polygon = Class.extend({
     },
 
     rotate: function(theta){
-        
+        var c = Math.cos(theta);
+        var s = Math.sin(theta);
+
+        for(var i = 0, len=this.points.length;i<len;i+=2){
+            var x = this.points[i];
+            var y = this.points[i+1];
+
+            this.points[i] = c*x - s*y;
+            this.points[i + 1] = s*x + c*y;
+        }
     },
     scale:function(c){
         for(var i = 0, len = this.points.length; i<len; i++){
