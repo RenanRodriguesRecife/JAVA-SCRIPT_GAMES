@@ -2,7 +2,7 @@ var State = Class.extend({
     init: function(game){
         this.game = game;
     },
-    handleInput: function(){},
+    handleInputs: function(){},
     update: function(){},
     render: function(ctx){}
 })
