@@ -8,7 +8,9 @@ var Polygon = Class.extend({
         
     },
     scale:function(c){
-
+        for(var i = 0, len = this.points.length; i<len; i++){
+            this.points[i] *=c;
+        }
     },
     hasPoint:function(ox, oy, x, y){
 
