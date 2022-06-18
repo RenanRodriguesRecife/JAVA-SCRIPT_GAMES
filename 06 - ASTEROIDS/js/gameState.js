@@ -7,7 +7,7 @@ var GameState = State.extend({
     },  
 
     update: function(){
-        
+        this.poly.rotate(0.01);
     },
 
     render: function(ctx){
