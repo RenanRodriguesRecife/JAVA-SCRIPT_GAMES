@@ -25,6 +25,11 @@ var level1 = [
     [1,1,1,1,1,1,1,1,1,1],
 ]
 
+//teclado
+document.addEventListener('keydown',function(key){
+    console.log(key.keyCode);
+})
+
 class Level{
     constructor(can,ctx,arr){
         this.canvas = can;
