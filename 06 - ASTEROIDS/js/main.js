@@ -10,6 +10,7 @@ var Game = Class.extend({
     init: function(){
         this.canvas = new Canvas(640, 480);
 
+        this.canvas.ctx.strokeStyle = "#fff";
         this.currentState = null;
         this.nextState = States.GAME;
     },
