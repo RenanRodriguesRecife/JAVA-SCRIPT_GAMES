@@ -3,7 +3,7 @@ var GameState = State.extend({
         this._super(game);
 
         this.poly = new Polygon([-1,-1,1,1,-1,1,-1,-1])
-        this.poly.scale(10);
+        this.poly.scale(50);
     },  
 
     update: function(){
@@ -11,6 +11,7 @@ var GameState = State.extend({
     },
 
     render: function(ctx){
+        ctx.clearAll();
         ctx.drawPolygon(this.poly, 100, 100);
     }
 })
