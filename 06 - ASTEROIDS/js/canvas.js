@@ -17,7 +17,11 @@ var Canvas = Class.extend({
                 }
                 this.stroke();
 
-                this.stroke();
+                
+            }
+
+            ctx.clearAll = function(){
+                this.clearRect(0,0,this.width,this.height);
             }
 
             return ctx;
