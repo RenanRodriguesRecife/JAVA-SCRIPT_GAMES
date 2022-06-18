@@ -8,5 +8,9 @@ var GameState = State.extend({
 
     update: function(){
         
+    },
+
+    render: function(ctx){
+        ctx.drawPolygon(this.poly, 100, 100);
     }
 })
