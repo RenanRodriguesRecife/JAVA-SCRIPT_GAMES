@@ -10,7 +10,7 @@ export class Fighter{
     }
 
     update(time,context){
-        const [, ,width] = this.frames.get(`forwards-${this.animationFrame}`);
+        const [[, ,width]] = this.frames.get(`forwards-${this.animationFrame}`);
 
         if(time.previous > this.animationTimer + 60){
             this.animationTimer = time.previous;
@@ -36,8 +36,18 @@ export class Fighter{
     }
 
     draw(context){
-        const[x, y, width, height] = this.frames.get(`forwards-${this.animationFrame}`);
-        context.drawImage(this.image, x, y, width, height, this.position.x, this.position.y, width, height);
+        const[
+            [x, y, width, height],
+            [originX, originY],
+         ] = this.frames.get(`forwards-${this.animationFrame}`);
+        
+         context.drawImage(
+            this.image,
+            x, y, 
+            width, height, 
+            this.position.x - originX, this.position.y - originY,
+            width, height);
+
         this.drawDebug(context);
     }
 }
