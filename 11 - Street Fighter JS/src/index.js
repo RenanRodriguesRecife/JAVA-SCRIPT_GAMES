@@ -26,14 +26,22 @@ window.addEventListener('load', function(){
     let previousTime = 0;
     let secondsPassed = 0;
 
+
+    let frameTime = {
+       previous: 0,
+       secondsPassed: 0,
+    }
+
     function frame(time){
         window.requestAnimationFrame(frame);
-        secondsPassed = (time - previousTime)/1000;
-        previousTime = time;
 
+        frameTime ={
+            secondsPassed: (time - frameTime.previous)/1000,
+            previous: time,
+        }
 
         for(const entity of entities){
-            entity.update(secondsPassed,context);
+            entity.update(frameTime,context);
         }
 
         for(const entity of entities){
