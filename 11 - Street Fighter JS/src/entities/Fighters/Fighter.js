@@ -12,7 +12,7 @@ export class Fighter{
     update(time,context){
         const [, ,width] = this.frames.get(`forwards-${this.animationFrame}`);
 
-        if(time.previous > this.animationTimer * 60){
+        if(time.previous > this.animationTimer + 60){
             this.animationTimer = time.previous;
             this.animationFrame++;
             if(this.animationFrame > 6) this.animationFrame =1;    
@@ -24,8 +24,20 @@ export class Fighter{
         }
     }
 
+    drawDebug(ctx){
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.strokeStyle = 'white';
+        ctx.moveTo(this.position.x - 5, this.position.y);
+        ctx.lineTo(this.position.x + 4, this.position.y);
+        ctx.moveTo(this.position.x, this.position.y - 5);
+        ctx.lineTo(this.position.x, this.position.y + 4);
+        ctx.stroke();
+    }
+
     draw(context){
         const[x, y, width, height] = this.frames.get(`forwards-${this.animationFrame}`);
         context.drawImage(this.image, x, y, width, height, this.position.x, this.position.y, width, height);
+        this.drawDebug(context);
     }
 }
