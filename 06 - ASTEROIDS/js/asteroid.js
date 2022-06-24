@@ -5,6 +5,9 @@ var Asteroid = Polygon.extend({
 
     init: function(p,s,x,y){
         this._super(p);
+
+        this.size = s;
+        
         this.x = x;
         this.y = y;
         this.scale(s);
