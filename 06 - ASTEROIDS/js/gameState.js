@@ -25,8 +25,8 @@ var GameState = State.extend({
         for(var i = 0; i < num; i++){
                 var n = Math.round(Math.random()*(Points.ASTEROIDS.length-1))
                 var poly = new Asteroid(Points.ASTEROIDS[n],10,100,100)
-                poly.maxX = game.canvasWidth;
-                poly.maxY = game.canvasHeight;
+                poly.maxX = this.canvasWidth;
+                poly.maxY = this.canvasHeight;
                 this.asteroids.push(poly);
             }
     },
