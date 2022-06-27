@@ -4,6 +4,14 @@ var InputHandeler = Class.extend({
         this.down = {},
         this.pressed = {};
 
+        for(key in keys){
+            var code = keys[key];
+            
+            this.keys[code] = key;
+            this.down[key] = false;
+            this.pressed[key] = false;
+        }
+
         var self = this;
         document.addEventListener("keydown",function(evt){
 
