@@ -40,3 +40,4 @@ var InputHandeler = Class.extend({
         return false;
     }
 })
+
