@@ -37,6 +37,17 @@ var GameState = State.extend({
             }
     },
 
+    handleInputs: function(input){
+        if(input.isDown('right')){
+            this.ship.rotate(0.06)    }
+        if(input.isDown('left')){
+            this.ship.rotate(-0.06)
+        }
+        if(input.isDown('up')){
+            this.ship.addVel()/
+        }
+    },
+
     update: function(){
         for (var i = 0; len = this.asteroids.length, i < len; i++){
             this.asteroids[i].update();
